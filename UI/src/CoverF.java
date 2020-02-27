@@ -17,6 +17,7 @@ import java.awt.event.InputMethodListener;
 import java.awt.event.InputMethodEvent;
 import javax.swing.JTextArea;
 
+
 @SuppressWarnings("serial")
 public class CoverF extends JFrame {
 
@@ -24,6 +25,7 @@ public class CoverF extends JFrame {
 	private JTextField textField;
 	private JTextArea textArea;
 
+	
 	/**
 	 * Launch the application.
 	 */
@@ -121,6 +123,7 @@ public class CoverF extends JFrame {
 		contentPane.add(textField, gbc_textField);
 		textField.setColumns(10);
 		textField.setText("도서명을 입력해주세요.");
+		
 				//텍스트 창 끝
 		
 		
