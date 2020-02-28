@@ -17,6 +17,12 @@ import java.awt.event.InputMethodListener;
 import java.awt.event.InputMethodEvent;
 import javax.swing.JTextArea;
 
+public class bookControl {
+	
+}
+
+
+
 
 @SuppressWarnings("serial")
 public class CoverF extends JFrame {
