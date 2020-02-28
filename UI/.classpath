@@ -6,9 +6,9 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="lib" path="C:/Program Files (x86)/Java/jre1.8.0_241/lib/poi-3.11.jar"/>
-	<classpathentry kind="lib" path="C:/Program Files (x86)/Java/jre1.8.0_241/lib/poi-ooxml-3.11.jar"/>
-	<classpathentry kind="lib" path="C:/Program Files (x86)/Java/jre1.8.0_241/lib/poi-ooxml-schemas-3.11.jar"/>
-	<classpathentry kind="lib" path="C:/Program Files (x86)/Java/jre1.8.0_241/lib/xmlbeans-2.6.0.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files/Java/jre1.8.0_231/lib/poi-3.11.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files/Java/jre1.8.0_231/lib/poi-ooxml-3.11.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files/Java/jre1.8.0_231/lib/poi-ooxml-schemas-3.11.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files/Java/jre1.8.0_231/lib/xmlbeans-2.6.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
