@@ -5,10 +5,6 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import org.apache.poi.xssf.usermodel.XSSFCell;
-import org.apache.poi.xssf.usermodel.XSSFRow;
-import org.apache.poi.xssf.usermodel.XSSFSheet;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import java.awt.GridBagLayout;
 import javax.swing.JTextField;
@@ -19,7 +15,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.io.FileInputStream;
 import java.awt.event.InputMethodListener;
 import java.awt.event.InputMethodEvent;
 import javax.swing.JTextArea;
@@ -32,158 +27,7 @@ public class CoverF extends JFrame  {
 	private JTextField textField;
 	private JTextArea textArea;
 	
-	public void xcellData()
-	{
-		String value=""; 
-		
-		//엑셀의 데이터를 가지오는 메소드
-				
-				try
-				{
-		            FileInputStream file = new FileInputStream("C:/Users/ehdtj/OneDrive/바탕 화면/Web/bookControl/UI/bookList.xlsx");
-		            @SuppressWarnings("resource")
-					XSSFWorkbook workbook = new XSSFWorkbook(file);
-		            
-		            //매개 변수 선언
-		            int rowindex=0;
-		            int columnindex=0;
 
-		            //시트 가져옴, 시트 수 (첫번째에만 존재하므로 0을 준다)
-		            XSSFSheet sheet = workbook.getSheetAt(0);
-		            
-		            //시트 안의 행의 수를 가져옴
-		            int rows = sheet.getPhysicalNumberOfRows();
-		            
-		            for(rowindex=0; rowindex<rows+30; rowindex++)//받아온 행만큼 반복
-		            {	
-		                //rowindex번 째의 시트 안의 행 val 가져옴
-		                XSSFRow row = sheet.getRow(rowindex);
-		                if(row !=null)//val이 null이 아닐 때
-		                {	
-		                    //셀의 수 받아옴
-		                    int cells = row.getPhysicalNumberOfCells();
-		                    
-		                    for(columnindex=0; columnindex<=cells+3; columnindex++) //받아온 cloumn 만큼 반복
-		                    { 
-		                        //셀값을 읽는다
-		                        XSSFCell cell = row.getCell(columnindex); //행의 column val을 가져옴
-		                        
-		                        //String value=""; //선언
-		                        //셀이 빈값일경우를 위한 널체크
-		                        if(cell == null) //행의 cloumn val가 null이면
-		                        { 
-		                            continue;	//해당 if,else를 탈출해라
-		                        }
-		                        
-		                        else//행의 cloumn val가 존재한다면
-		                        {	
-		                            //타입별로 내용 읽기
-		                            switch (cell.getCellType())
-		                            {
-		                            case XSSFCell.CELL_TYPE_FORMULA:
-		                                value=cell.getCellFormula();
-		                                break;
-		                            case XSSFCell.CELL_TYPE_NUMERIC:
-		                                value=cell.getNumericCellValue()+"";
-		                                break;
-		                            case XSSFCell.CELL_TYPE_STRING:
-		                                value=cell.getStringCellValue()+"";
-		                                break;
-		                            case XSSFCell.CELL_TYPE_BLANK:
-		                                value=cell.getBooleanCellValue()+"";
-		                                break;
-		                            case XSSFCell.CELL_TYPE_ERROR:
-		                                value=cell.getErrorCellValue()+"";
-		                                break;
-		                            }
-		                        }
-
-		                    }
-		 
-		                }
-		            }
-				}
-				catch(Exception e) 
-					{
-					e.printStackTrace();
-					}
-				}
-	}
-	
-//도서 대출에 관한 클래스	
-static class checkOutF
-{
-	//개인정보를 입력받아서 저장
-	public void save(int ID, String name, int PH)
-	{
-		
-	}
-	//도서 수량을 알려줌
-	//도서 수량을 감소
-	//대출 비활성화
-	//대출자 개인정보를 대출 탭에 출력
-	
-}
-	
-	
-	
-static class serchF{
-	//전역 변수 선언
-			static String value=""; 
-			
-	//엑셀의 데이터를 가지오는 메소드
-			public static void xcell() 
-			{
-			try
-			{   
-				
-	            returnVal(value);
-			}
-			catch(Exception e) 
-				{
-				e.printStackTrace();
-				}
-			}
-			
-	//입력된 String 값을 출력, 반환
-			public static String returnVal (String value) 
-			{
-				System.out.println(value);
-+				return value;
-			}
-			
-	//배열 변수 초기화
-			static String data[][];
-			
-	//엑셀 데이터를 배열화
-			public static void array (String value)
-			{
-				int i,j;
-				
-				for(j=0; j<=1500; j++)
-				{
-					for(i=1; i<=9; i++);
-					{
-						data[i][j] = value;
-					}
-				}
-				
-			}
-
-	//입력받은 값을 찾아서 행값을 반환
-			/*
-			public static String serch (String input)
-			{
-				data.indexOf(input);
-				
-				
-			}
-			*/
-			
-
-
-}
-	
 	/**
 	 * Launch the application.
 	 */
