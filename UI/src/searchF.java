@@ -2,6 +2,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
+
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -21,7 +22,7 @@ import java.util.ArrayList;
 */
 
 
-class serchF{
+class searchF{
 	//전역 변수 선언
 			String value;
 			String bookName;
@@ -78,20 +79,22 @@ class serchF{
 								{
 									switch(cell.getCellType())
 									{
-									case XSSFCell.CELL_TYPE_FORMULA:
+									case FORMULA://XSSFCell.CELL_TYPE_FORMULA:
 										value = cell.getCellFormula();
 										break;
-									case XSSFCell.CELL_TYPE_NUMERIC:
+									case NUMERIC://XSSFCell.CELL_TYPE_NUMERIC:
 										value = cell.getNumericCellValue()+"";
 										break;
-									case XSSFCell.CELL_TYPE_STRING:
+									case STRING://XSSFCell.CELL_TYPE_STRING:
 										value = cell.getStringCellValue()+"";
 										break;
-									case XSSFCell.CELL_TYPE_BLANK:
+									case BLANK://XSSFCell.CELL_TYPE_BLANK:
 										value = cell.getBooleanCellValue()+"";
 										break;
-									case XSSFCell.CELL_TYPE_ERROR:
+									case ERROR://XSSFCell.CELL_TYPE_ERROR:
 										value = cell.getErrorCellValue()+"";
+										break;
+									default:
 										break;
 									}
 								}//for문
@@ -149,3 +152,4 @@ class serchF{
 		this.compareIndex = false;
 	}
 }
+

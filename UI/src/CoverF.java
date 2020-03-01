@@ -6,6 +6,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 
+
 import java.awt.GridBagLayout;
 import javax.swing.JTextField;
 import java.awt.GridBagConstraints;
@@ -15,9 +16,12 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 import java.awt.event.InputMethodListener;
 import java.awt.event.InputMethodEvent;
 import javax.swing.JTextArea;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 
 @SuppressWarnings("serial")
@@ -60,6 +64,10 @@ public class CoverF extends JFrame  {
 	 */
 	public CoverF() {
 		
+		searchF search = new searchF();
+		
+		//checkOutF checkOut = new checkOutF();
+		
 		//외부 프레임
 		setTitle("\uC0AC\uD68C\uD559\uACFC \uB3C4\uC11C\uAD00\uB9AC \uD504\uB85C\uADF8\uB7A8");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -79,10 +87,23 @@ public class CoverF extends JFrame  {
 		//도서 검색 버튼
 		JButton btnNewButton = new JButton("\uAC80\uC0C9");
 		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				//그리고 이 값을 DBMS에 보내서 검색 시도하는 매서드
-				//DBMS의 검색결과를 가져오는 메서드
-				//textArea.setText(t);
+			public void actionPerformed(ActionEvent e) 
+			{
+				//입력값을 받음
+				String input = textField.getText();
+				//엑셀 데이터를 받아옴
+				search.getData();
+				//비교
+				search.returnIndex(input);
+				//데이터를 전역 변수 대입
+				search.serchResult();
+				
+				String bookName = search.bookName;
+				String author = search.author;
+				String translator= search.translator;
+				String publishingCompany = search.publishingCompany;
+				String amount = search.amount;
+				textArea.setText("책이름: "+bookName+System.lineSeparator()+"저자: "+author+System.lineSeparator()+"번역가: "+translator+System.lineSeparator()+"출판사: "+publishingCompany+System.lineSeparator()+"수량: "+amount);
 			}
 		});
 		GridBagConstraints gbc_btnNewButton = new GridBagConstraints();
@@ -95,14 +116,37 @@ public class CoverF extends JFrame  {
 		
 		//도서 검색 텍스트 창
 		textField = new JTextField();
+		textField.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) 
+			{
+				if (e.getKeyCode() == KeyEvent.VK_ENTER)
+				{
+					//입력값을 받음
+					String input = textField.getText();
+					//엑셀 데이터를 받아옴
+					search.getData();
+					//비교
+					search.returnIndex(input);
+					//데이터를 전역 변수 대입
+					search.serchResult();
+					
+					String bookName = search.bookName;
+					String author = search.author;
+					String translator= search.translator;
+					String publishingCompany = search.publishingCompany;
+					String amount = search.amount;
+					textArea.setText("책이름: "+bookName+System.lineSeparator()+"저자: "+author+System.lineSeparator()+"번역가: "+translator+System.lineSeparator()+"출판사: "+publishingCompany+System.lineSeparator()+"수량: "+amount);
+				}
+
+			}
+		});
 		textField.addInputMethodListener(new InputMethodListener() {
 			public void caretPositionChanged(InputMethodEvent event) {
 			}
-			public void inputMethodTextChanged(InputMethodEvent event) {		
+			public void inputMethodTextChanged(InputMethodEvent event) 
+			{		
 				textField.getText();
-				//그리고 이 값을 DBMS에 보내서 검색 시도하는 매서드
-				//DBMS의 검색결과를 가져오는 메서드
-				//textArea.setText(t);
 			}
 		});
 		
@@ -136,6 +180,7 @@ public class CoverF extends JFrame  {
 		gbc_textArea.gridx = 1;
 		gbc_textArea.gridy = 3;
 		contentPane.add(textArea, gbc_textArea);
+		textArea.setEditable(false);
 				//결과 표시 끝
 				
 		
