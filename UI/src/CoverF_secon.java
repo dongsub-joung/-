@@ -1,4 +1,4 @@
-import java.awt.BorderLayout;
+
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -10,6 +10,9 @@ import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JLabel;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
 
 public class CoverF_secon extends JFrame {
 
@@ -67,6 +70,23 @@ public class CoverF_secon extends JFrame {
 		JLabel lblNewLabel_2 = new JLabel("\uC804\uD654 \uBC88\uD638");
 		
 		JButton btnNewButton = new JButton("Submit");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) 
+			{
+				//각각의 텍스트 필드에서 입력값을 가져옴
+				String personData = textField.getText();
+				String name = textField_1.getText();
+				String PHData = textField_2.getText();
+
+				checkOutF check = new checkOutF();
+				check.saveData(personData, name, PHData);
+				
+				//값을 초기화
+				textField.setText("");
+				textField_1.setText("");
+				textField_2.setText("");
+			}
+		});
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
