@@ -1,5 +1,6 @@
 
 import java.awt.*;
+import javax.swing.JDialog;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -22,6 +23,10 @@ import java.awt.event.InputMethodEvent;
 import javax.swing.JTextArea;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import javax.swing.JPopupMenu;
+import javax.swing.JLabel;
+import javax.swing.JLayeredPane;
+import com.jgoodies.forms.factories.DefaultComponentFactory;
 
 
 @SuppressWarnings("serial")
@@ -44,6 +49,7 @@ public class CoverF extends JFrame  {
 					//외부 프레임
 					CoverF frame = new CoverF();
 					frame.setVisible(true);
+					
 															
 					
 				} catch (Exception e) {
@@ -79,7 +85,7 @@ public class CoverF extends JFrame  {
 		setContentPane(contentPane);
 		GridBagLayout gbl_contentPane = new GridBagLayout();
 		gbl_contentPane.columnWidths = new int[]{0, 0, 0};
-		gbl_contentPane.rowHeights = new int[]{0, 0, 0, 197, 0};
+		gbl_contentPane.rowHeights = new int[]{0, 0, 0, 200, 0};
 		gbl_contentPane.columnWeights = new double[]{0.0, 1.0, Double.MIN_VALUE};
 		gbl_contentPane.rowWeights = new double[]{0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
 		contentPane.setLayout(gbl_contentPane);
@@ -173,9 +179,11 @@ public class CoverF extends JFrame  {
 		
 		btnNewButton_1 = new JButton("\uB300\uCD9C");
 		btnNewButton_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(ActionEvent e) 
+			{
+				JLabel jib = new JLabel("");
 				
-			}
+			}//대출 버튼
 		});
 		GridBagConstraints gbc_btnNewButton_1 = new GridBagConstraints();
 		gbc_btnNewButton_1.insets = new Insets(0, 0, 5, 5);
@@ -191,12 +199,12 @@ public class CoverF extends JFrame  {
 			@Override
 			public void keyPressed(KeyEvent e) 
 			{ //학번만 받음.
-				String input = textField_1.getText();
+				/*String input = textField_1.getText();
 				if (e.getKeyCode() == KeyEvent.VK_ENTER)
 				{
-					checkOutF start = new checkOutF();
+					//checkOutF start = new checkOutF();
 					
-				}
+				}*/
 			}
 		});
 		textField_1.setText("\uD559\uBC88, \uC774\uB984, \uBC88\uD638\uB97C \uC785\uB825\uD574\uC8FC\uC138\uC694.");
@@ -221,4 +229,18 @@ public class CoverF extends JFrame  {
 				//결과 표시 끝	
 	}
 
+	class secF extends JDialog
+	{
+		JLabel jib = new JLabel("");
+		public secF(String str)
+		{
+			getContentPane().add(jib);
+			
+			jib.setText(str.toString());
+			
+			this.setSize(200,100);
+			this.setModal(true);
+			this.setVisible(true);
+		}
+	}
 }
