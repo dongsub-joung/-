@@ -30,6 +30,8 @@ public class CoverF extends JFrame  {
 	private JPanel contentPane;
 	private JTextField textField;
 	private JTextArea textArea;
+	private JButton btnNewButton_1;
+	private JTextField textField_1;
 	
 
 	/**
@@ -68,7 +70,7 @@ public class CoverF extends JFrame  {
 		
 		//checkOutF checkOut = new checkOutF();
 		
-		//외부 프레임
+//외부 프레임
 		setTitle("\uC0AC\uD68C\uD559\uACFC \uB3C4\uC11C\uAD00\uB9AC \uD504\uB85C\uADF8\uB7A8");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -77,14 +79,14 @@ public class CoverF extends JFrame  {
 		setContentPane(contentPane);
 		GridBagLayout gbl_contentPane = new GridBagLayout();
 		gbl_contentPane.columnWidths = new int[]{0, 0, 0};
-		gbl_contentPane.rowHeights = new int[]{0, 0, 0, 0, 0};
+		gbl_contentPane.rowHeights = new int[]{0, 0, 0, 197, 0};
 		gbl_contentPane.columnWeights = new double[]{0.0, 1.0, Double.MIN_VALUE};
 		gbl_contentPane.rowWeights = new double[]{0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
 		contentPane.setLayout(gbl_contentPane);
 				//외부 프레임 끝
 		
 		
-		//도서 검색 버튼
+//도서 검색 버튼
 		JButton btnNewButton = new JButton("\uAC80\uC0C9");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
@@ -114,7 +116,7 @@ public class CoverF extends JFrame  {
 				//검색 버튼 끝
 		
 		
-		//도서 검색 텍스트 창
+//도서 검색 텍스트 창
 		textField = new JTextField();
 		textField.addKeyListener(new KeyAdapter() {
 			@Override
@@ -148,9 +150,7 @@ public class CoverF extends JFrame  {
 			{		
 				textField.getText();
 			}
-		});
-		
-		
+		});	
 		textField.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -158,9 +158,10 @@ public class CoverF extends JFrame  {
 				textField.setText("");
 			}
 		});
+			//도서 검색 텍스트 창 끝
 		
 		
-		//도서검색창 프레임
+//도서검색창 프레임
 		GridBagConstraints gbc_textField = new GridBagConstraints();
 		gbc_textField.insets = new Insets(0, 0, 5, 0);
 		gbc_textField.fill = GridBagConstraints.HORIZONTAL;
@@ -170,24 +171,54 @@ public class CoverF extends JFrame  {
 		textField.setColumns(10);
 		textField.setText("도서명을 입력해주세요.");
 		
-				//텍스트 창 끝
+		btnNewButton_1 = new JButton("\uB300\uCD9C");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
+		GridBagConstraints gbc_btnNewButton_1 = new GridBagConstraints();
+		gbc_btnNewButton_1.insets = new Insets(0, 0, 5, 5);
+		gbc_btnNewButton_1.gridx = 0;
+		gbc_btnNewButton_1.gridy = 2;
+		contentPane.add(btnNewButton_1, gbc_btnNewButton_1);
+			//텍스트 창 끝
 		
 		
-		//결과 표시
+//대출 시 개인정보 입력 창
+		textField_1 = new JTextField();
+		textField_1.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) 
+			{ //학번만 받음.
+				String input = textField_1.getText();
+				if (e.getKeyCode() == KeyEvent.VK_ENTER)
+				{
+					checkOutF start = new checkOutF();
+					
+				}
+			}
+		});
+		textField_1.setText("\uD559\uBC88, \uC774\uB984, \uBC88\uD638\uB97C \uC785\uB825\uD574\uC8FC\uC138\uC694.");
+		GridBagConstraints gbc_textField_1 = new GridBagConstraints();
+		gbc_textField_1.insets = new Insets(0, 0, 5, 0);
+		gbc_textField_1.fill = GridBagConstraints.HORIZONTAL;
+		gbc_textField_1.gridx = 1;
+		gbc_textField_1.gridy = 2;
+		contentPane.add(textField_1, gbc_textField_1);
+		textField_1.setColumns(10);
+		//대출 시 개인정보 입력 끝
+				
+				
+//결과 표시
 		textArea = new JTextArea();
+		textArea.setEditable(false);
 		GridBagConstraints gbc_textArea = new GridBagConstraints();
 		gbc_textArea.fill = GridBagConstraints.BOTH;
 		gbc_textArea.gridx = 1;
 		gbc_textArea.gridy = 3;
 		contentPane.add(textArea, gbc_textArea);
-		textArea.setEditable(false);
-				//결과 표시 끝
-				
-		
-	
-		
-		
-		
+				//결과 표시 끝	
 	}
 
 }
