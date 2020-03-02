@@ -82,9 +82,11 @@ public class CoverF_secon extends JFrame {
 				check.saveData(personData, name, PHData);
 				
 				//값을 초기화
+				/*
 				textField.setText("");
 				textField_1.setText("");
 				textField_2.setText("");
+				*/
 			}
 		});
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);

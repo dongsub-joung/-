@@ -1,40 +1,32 @@
+import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
 
+import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 
+//개인정보를 입력받아서 저장
 
-/*	//도서 대출에 관한 클래스	
-{	
-	//개인정보를 입력받아서 저장
-	//도서 수량을 알려줌
-	//도서 수량을 감소
-	//대출 비활성화
-	//대출자 개인정보를 대출 탭에 출력
-}
-*/
-
-
-
-class checkOutF
+public class checkOutF
 {
+	//전역 변수
 	String personNum;
 	String name;
 	String phonNum;
+	//searchF 객체 생성
 	searchF read = new searchF();
 	
-	//스위치 변수
-	boolean sw= false;
-	
+	//생성자 
 	public checkOutF()
 	{
 		
 	}
 	
-	//개인정보를 입력받아서 저장
 	public checkOutF (String ID, String name, String PH)
 	{
 		super();
@@ -43,66 +35,73 @@ class checkOutF
 		this.phonNum = PH;
 	}
 	
-	
-	//도서 수량을 알려줌
-	public String volum()
-	{
-		read.getData();
-		String volum = read.amount;
-		return volum;
-	}
-	
-	
-	//도서 수량을 감소
-	public void decrease (String volum)
-	{
-		int i = Integer.parseInt(volum);
-		i = i-1;
-		if(i == 0) sw = true;
-	}
-	
-	
+
 	public  void saveData(String personNum, String name, String PH)
 	{
-		FileOutputStream outStream = null;
-
-		try {
+		XSSFRow row;
+		//XSSFCell cell;
+		try 
+		{
 			//파일을 읽어옴
 			String filepath = "C:/Users/ehdtj/OneDrive/바탕 화면/Web/bookControl/UI/info.xlsx";
 			FileInputStream xlsxFile = new FileInputStream(filepath);
+			
 			//엑셀 객체화
 			XSSFWorkbook workbook = new XSSFWorkbook(xlsxFile);
 			//엑셀 1번째 시트를 받아옴
 			XSSFSheet sheet = workbook.getSheetAt(0);
-			//시트 객체에서 row 수를 받아옴
-			int row = sheet.getPhysicalNumberOfRows();
 			
-			for(int rowNum=0; rowNum<5; rowNum++)
+			
+			//0,1,2,3,4,5,6.. 증가 그렇지만 입력 하나당 한번씩 했으면
+			int rowMax = sheet.getPhysicalNumberOfRows();
+			
+			row = sheet.createRow(rowMax);
+			
+			int jMax = 3;
+			for(int j=0; j<=jMax; j++)
 			{
-				XSSFRow xlsxRow = sheet.getRow(rowNum);
-				
-				//셀 값
-				int cells = xlsxRow.getPhysicalNumberOfCells();
-				for(int cellNum=0; cellNum<5; cellNum++)
+				switch (j) 
 				{
-					//셀 값을 불러옴
-					String cell = xlsxRow.getCell(cellNum).toString();
-					if(cell == null)
-					{
-						int a = cellNum%3;
-						if(a == 1) xlsxRow.createCell(cellNum).setCellValue(personNum);
-						if(a == 2) xlsxRow.createCell(cellNum).setCellValue(name);
-						if(a == 0) xlsxRow.createCell(cellNum).setCellValue(PH);
-					}
+				case 0:
+					row.createCell(j).setCellValue(personNum);
+					break;
+				case 1:
+					row.createCell(j).setCellValue(name);
+					break;
+				case 2:
+					row.createCell(j).setCellValue(PH);
+					break;
+					
+				default:
+					break;
 				}
-			} //반복 끝
+				
+			}
+
+			try //데이터 저장
+			{
+				FileOutputStream outFile = new FileOutputStream(new File(filepath));
+				workbook.write(outFile);
+				outFile.close();
+			} 
 			
-			outStream = new FileOutputStream(filepath);
-			workbook.write(outStream);
+			catch (Exception e) 
+			{
+				// TODO: handle exception
+			}
+		}
 		
-			xlsxFile.close();
-			
-		} catch (Exception e) {
+		
+		catch (FileNotFoundException e)
+		{
+			e.printStackTrace();
+		}
+		catch (IOException e)
+		{
+			e.printStackTrace();
+		}
+		catch (Exception e) 
+		{
 			// TODO: handle exception
 		}
 		
