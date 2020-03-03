@@ -3,8 +3,6 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-
-import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -18,6 +16,7 @@ public class checkOutF
 	String personNum;
 	String name;
 	String phonNum;
+	String bookTitle;
 	//searchF °´Ã¼ »ý¼º
 	searchF read = new searchF();
 	
@@ -27,16 +26,17 @@ public class checkOutF
 		
 	}
 	
-	public checkOutF (String ID, String name, String PH)
+	public checkOutF (String Title, String ID, String name, String PH)
 	{
 		super();
+		this.bookTitle = Title;
 		this.personNum = ID;
 		this.name = name;
 		this.phonNum = PH;
 	}
 	
 
-	public  void saveData(String personNum, String name, String PH)
+	public  void saveData(String bookTitle, String personNum, String name, String PH)
 	{
 		XSSFRow row;
 		//XSSFCell cell;
@@ -57,7 +57,7 @@ public class checkOutF
 			
 			row = sheet.createRow(rowMax);
 			
-			int jMax = 3;
+			int jMax = 4;
 			for(int j=0; j<=jMax; j++)
 			{
 				switch (j) 
@@ -66,12 +66,14 @@ public class checkOutF
 					row.createCell(j).setCellValue(personNum);
 					break;
 				case 1:
-					row.createCell(j).setCellValue(name);
+					row.createCell(j).setCellValue(personNum);
 					break;
 				case 2:
-					row.createCell(j).setCellValue(PH);
+					row.createCell(j).setCellValue(name);
 					break;
-					
+				case 3:
+					row.createCell(j).setCellValue(PH);
+					break;	
 				default:
 					break;
 				}

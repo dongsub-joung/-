@@ -24,7 +24,8 @@ public class CoverF_secon extends JFrame {
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
-
+	private JTextField textField_3;
+	
 	/**
 	 * Launch the application.
 	 */
@@ -48,8 +49,7 @@ public class CoverF_secon extends JFrame {
 	 */
 	public CoverF_secon() {
 		setTitle("\uB300\uCD9C\uC790 \uC815\uBCF4");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 262, 191);
+		setBounds(100, 100, 242, 226);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -63,11 +63,16 @@ public class CoverF_secon extends JFrame {
 		textField_2 = new JTextField();
 		textField_2.setColumns(10);
 		
+		textField_3 = new JTextField();
+		textField_3.setColumns(10);
+		
 		JLabel lblNewLabel = new JLabel("\uD559\uBC88");
 		
 		JLabel lblNewLabel_1 = new JLabel("\uC774\uB984");
 		
 		JLabel lblNewLabel_2 = new JLabel("\uC804\uD654 \uBC88\uD638");
+		
+		JLabel lblNewLabel_3 = new JLabel("\uCC45 \uC774\uB984");
 		
 		JButton btnNewButton = new JButton("Submit");
 		btnNewButton.addActionListener(new ActionListener() {
@@ -77,16 +82,16 @@ public class CoverF_secon extends JFrame {
 				String personData = textField.getText();
 				String name = textField_1.getText();
 				String PHData = textField_2.getText();
+				String bookTitle = textField_3.getText();
 
 				checkOutF check = new checkOutF();
-				check.saveData(personData, name, PHData);
+				check.saveData(bookTitle, personData, name, PHData);
 				
 				//값을 초기화
-				/*
 				textField.setText("");
 				textField_1.setText("");
 				textField_2.setText("");
-				*/
+				textField_3.setText("");
 			}
 		});
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
@@ -94,20 +99,19 @@ public class CoverF_secon extends JFrame {
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addContainerGap()
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
-						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-							.addComponent(lblNewLabel)
-							.addComponent(lblNewLabel_1))
-						.addComponent(lblNewLabel_2))
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addComponent(lblNewLabel_2)
+						.addComponent(lblNewLabel_3)
+						.addComponent(lblNewLabel_1)
+						.addComponent(lblNewLabel))
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(10)
-							.addComponent(btnNewButton))
+						.addComponent(btnNewButton)
+						.addComponent(textField_3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(textField_2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addContainerGap(48, Short.MAX_VALUE))
+					.addContainerGap(46, Short.MAX_VALUE))
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -124,9 +128,13 @@ public class CoverF_secon extends JFrame {
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
 						.addComponent(textField_2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(lblNewLabel_2))
-					.addPreferredGap(ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+						.addComponent(textField_3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblNewLabel_3))
+					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(btnNewButton)
-					.addContainerGap())
+					.addContainerGap(29, Short.MAX_VALUE))
 		);
 		contentPane.setLayout(gl_contentPane);
 	}
