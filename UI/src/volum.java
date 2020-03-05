@@ -11,22 +11,22 @@
 public class volum extends checkOutF {
 	
 	boolean sw= false;
+	int book_volum;
 	
 	//도서 수량을 알려줌
-	public String bringVolum()
+	public void bringVolum()
 	{
 		read.getData();
 		String volum = read.amount;
-		return volum;
+		book_volum = Integer.parseInt(volum);
 	}
 	
 	
 	//도서 수량을 감소
-	public void decrease (String volum)
+	public void decrease (int volum)
 	{
-		int i = Integer.parseInt(volum);
-		i = i-1;
-		if(i == 0) sw = true;
+		book_volum = book_volum-1;
+		if(book_volum == 0) sw = true;
 	}
 	
 }

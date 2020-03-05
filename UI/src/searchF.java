@@ -136,15 +136,15 @@ class searchF{
 	{
 		int first = this.resultIndex;
 		int i;
-		for(i=0; i<=7; i++)
+		for(i=0; i<=8; i++)
 		{
 			String data = list.get(first);
 			first++;
 			if(i==0) this.bookName = data;
-			if(i==1) this.publishingCompany= data;
+			if(i==1) this.publishingCompany = data;
 			if(i==2) this.author = data;
 			if(i==3) this.translator = data;
-			if(i==6) this.amount = data;
+			if(i==7) this.amount = data;
 			
 			//내가 원하는건 list에 있는 데이터를 first~ +7까지의 데이터를 가져오는 것.
 		}
