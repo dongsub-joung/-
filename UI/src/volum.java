@@ -7,7 +7,7 @@
 	//대출자 개인정보를 대출 탭에 출력
 }
 */
-
+/*
 public class volum extends checkOutF {
 	
 	boolean sw= false;
@@ -29,4 +29,4 @@ public class volum extends checkOutF {
 		if(book_volum == 0) sw = true;
 	}
 	
-}
+}*/

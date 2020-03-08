@@ -67,7 +67,7 @@ public class CoverF extends JFrame  {
 	 */
 	public CoverF() {
 		
-		searchF search = new searchF();
+
 		
 		//checkOutF checkOut = new checkOutF();
 		
@@ -90,20 +90,24 @@ public class CoverF extends JFrame  {
 			{
 				if (e.getKeyCode() == KeyEvent.VK_ENTER)
 				{
-					//입력값을 받음
+					//입력값을 가져옴
 					String input = textField.getText();
-					//엑셀 데이터를 받아옴
-					search.getData();
-					//비교
-					search.returnIndex(input);
-					//데이터를 전역 변수 대입
-					search.serchResult();
+
+					//검색 후  해당하는 행 값을 가져옴
+					searchF_bookName search_book = new searchF_bookName();
+					int index = search_book.return_ResultIndex(input);
+
+					String bookName = search_book.return_bookName(index);
 					
-					String bookName = search.bookName;
-					String author = search.author;
-					String translator= search.translator;
-					String publishingCompany = search.publishingCompany;
-					String amount = search.amount;
+					//해당 행 값의 데이터를 가져옴
+					searchF_other other = new searchF_other(index);
+					
+					String author = other.retunr_author();
+					String translator= other.retunr_translator();
+					String publishingCompany = other.retunr_publishing();
+					String amount = other.retunr_amount();
+						
+					//출력
 					textArea.setText("책이름: "+bookName+System.lineSeparator()+"저자: "+author+System.lineSeparator()+"번역가: "+translator+System.lineSeparator()+"출판사: "+publishingCompany+System.lineSeparator()+"수량: "+amount);
 				}
 
@@ -131,21 +135,25 @@ public class CoverF extends JFrame  {
 		JButton btnNewButton = new JButton("\uAC80\uC0C9");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
-			{
-				//입력값을 받음
+			{	
+				//입력값을 가져옴
 				String input = textField.getText();
-				//엑셀 데이터를 받아옴
-				search.getData();
-				//비교
-				search.returnIndex(input);
-				//데이터를 전역 변수 대입
-				search.serchResult();
+
+				//검색 후  해당하는 행 값을 가져옴
+				searchF_bookName search_book = new searchF_bookName();
+				int index = search_book.return_ResultIndex(input);
+
+				String bookName = search_book.return_bookName(index);
 				
-				String bookName = search.bookName;
-				String author = search.author;
-				String translator= search.translator;
-				String publishingCompany = search.publishingCompany;
-				String amount = search.amount;
+				//해당 행 값의 데이터를 가져옴
+				searchF_other other = new searchF_other(index);
+				
+				String author = other.retunr_author();
+				String translator= other.retunr_translator();
+				String publishingCompany = other.retunr_publishing();
+				String amount = other.retunr_amount();
+					
+				//출력
 				textArea.setText("책이름: "+bookName+System.lineSeparator()+"저자: "+author+System.lineSeparator()+"번역가: "+translator+System.lineSeparator()+"출판사: "+publishingCompany+System.lineSeparator()+"수량: "+amount);
 			}
 		});
@@ -192,9 +200,9 @@ public class CoverF extends JFrame  {
 		textField_1.setEditable(false);
 		textField_1.setColumns(10);
 		//검색했던 책의 수량을 표시
-		volum volum = new volum();
-		String a = Integer.toString(volum.book_volum);
-		textField_1.setText(a);
+		//volum volum = new volum();
+		//String a = Integer.toString(volum.book_volum);
+		//textField_1.setText(a);
 		
 		
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);

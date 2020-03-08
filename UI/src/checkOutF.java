@@ -18,25 +18,19 @@ public class checkOutF
 	String phonNum;
 	String bookTitle;
 	//searchF °´Ã¼ »ý¼º
-	searchF read = new searchF();
+	searchF_bookName read_book = new searchF_bookName();
 	
-	//»ý¼ºÀÚ 
-	public checkOutF()
-	{
-		
-	}
-	
-	public checkOutF (String Title, String ID, String name, String PH)
+	public checkOutF (String ID, String name, String PH)
 	{
 		super();
-		this.bookTitle = Title;
+		this.bookTitle = read_book.bookName;
 		this.personNum = ID;
 		this.name = name;
 		this.phonNum = PH;
 	}
 	
 
-	public  void saveData(String bookTitle, String personNum, String name, String PH)
+	public  void saveData(String personNum, String name, String PH)
 	{
 		XSSFRow row;
 		//XSSFCell cell;
@@ -47,6 +41,7 @@ public class checkOutF
 			FileInputStream xlsxFile = new FileInputStream(filepath);
 			
 			//¿¢¼¿ °´Ã¼È­
+			@SuppressWarnings("resource")
 			XSSFWorkbook workbook = new XSSFWorkbook(xlsxFile);
 			//¿¢¼¿ 1¹øÂ° ½ÃÆ®¸¦ ¹Þ¾Æ¿È
 			XSSFSheet sheet = workbook.getSheetAt(0);
@@ -57,7 +52,7 @@ public class checkOutF
 			
 			row = sheet.createRow(rowMax);
 			
-			int jMax = 4;
+			int jMax = 5;
 			for(int j=0; j<=jMax; j++)
 			{
 				switch (j) 
@@ -74,10 +69,12 @@ public class checkOutF
 				case 3:
 					row.createCell(j).setCellValue(PH);
 					break;	
+				case 4:
+					row.createCell(j).setCellValue(bookTitle);
+					break;	
 				default:
 					break;
-				}
-				
+				}	
 			}
 
 			try //µ¥ÀÌÅÍ ÀúÀå

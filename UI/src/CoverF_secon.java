@@ -82,10 +82,10 @@ public class CoverF_secon extends JFrame {
 				String personData = textField.getText();
 				String name = textField_1.getText();
 				String PHData = textField_2.getText();
-				String bookTitle = textField_3.getText();
+				//String bookTitle = textField_3.getText();
 
-				checkOutF check = new checkOutF();
-				check.saveData(bookTitle, personData, name, PHData);
+				checkOutF check = new checkOutF(personData,name,PHData);
+				check.saveData(personData, name, PHData);
 				
 				//값을 초기화
 				textField.setText("");
