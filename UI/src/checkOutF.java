@@ -17,20 +17,81 @@ public class checkOutF
 	String name;
 	String phonNum;
 	String bookTitle;
-	//searchF °´Ã¼ »ý¼º
-	searchF_bookName read_book = new searchF_bookName();
 	
-	public checkOutF (String ID, String name, String PH)
+	public boolean returnBook;
+	//searchF °´Ã¼ »ý¼º
+	
+	public checkOutF() {
+		returnBook = false;
+	}
+	
+	public checkOutF (String ID, String name, String PH, String bookName)
 	{
 		super();
-		this.bookTitle = read_book.bookName;
 		this.personNum = ID;
 		this.name = name;
 		this.phonNum = PH;
+		this.bookTitle = bookName;
+	}
+	
+	public boolean sw_returnBook()
+	{
+		return returnBook = true;
+	}
+	
+	//ÇØ´ç Çà¿¡ "¹Ý³³"¹®ÀÚ¿­À» Ãß°¡
+	public void write_RE(int selectedIndex)
+	{
+			//XSSFRow row;
+			//XSSFCell cell;
+			try 
+			{
+				//ÆÄÀÏÀ» ÀÐ¾î¿È
+				String filepath = "C:/Users/ehdtj/OneDrive/¹ÙÅÁ È­¸é/Web/bookControl/UI/info.xlsx";
+				FileInputStream xlsxFile = new FileInputStream(filepath);
+				
+				//¿¢¼¿ °´Ã¼È­
+				@SuppressWarnings("resource")
+				XSSFWorkbook workbook = new XSSFWorkbook(xlsxFile);
+				//¿¢¼¿ 1¹øÂ° ½ÃÆ®¸¦ ¹Þ¾Æ¿È
+				XSSFSheet sheet = workbook.getSheetAt(0);
+				//Çà ÁöÁ¤
+				XSSFRow row = sheet.getRow(selectedIndex+1);
+				//5Çà¿¡ ¹Ý³³À» Ãß°¡
+				row.createCell(4).setCellValue("¹Ý³³");
+				
+				//µ¥ÀÌÅÍ ÀúÀå
+				try 
+				{
+					FileOutputStream outFile = new FileOutputStream(new File(filepath));
+					workbook.write(outFile);
+					outFile.close();
+				} 
+				
+				catch (Exception e) 
+				{
+					// TODO: handle exception
+				}
+			}
+			
+			
+			catch (FileNotFoundException e)
+			{
+				e.printStackTrace();
+			}
+			catch (IOException e)
+			{
+				e.printStackTrace();
+			}
+			catch (Exception e) 
+			{
+				// TODO: handle exception
+			}
+		
 	}
 	
 
-	public  void saveData(String personNum, String name, String PH)
+	public  void saveData(String personNum, String name, String PH, String bookTitle)
 	{
 		XSSFRow row;
 		//XSSFCell cell;
@@ -61,17 +122,14 @@ public class checkOutF
 					row.createCell(j).setCellValue(personNum);
 					break;
 				case 1:
-					row.createCell(j).setCellValue(personNum);
-					break;
-				case 2:
 					row.createCell(j).setCellValue(name);
 					break;
-				case 3:
+				case 2:
 					row.createCell(j).setCellValue(PH);
-					break;	
-				case 4:
+					break;
+				case 3:
 					row.createCell(j).setCellValue(bookTitle);
-					break;	
+					break;
 				default:
 					break;
 				}	

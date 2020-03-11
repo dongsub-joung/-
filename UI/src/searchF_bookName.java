@@ -12,8 +12,6 @@ public class searchF_bookName{
 
 	//전역 변수 선언
 	String value;
-	
-	boolean compareIndex = false;
 	//searchF_bookName에서 최종적으로 구하는 변수
 	public static ArrayList<String> bookName_list = new ArrayList<String>();
 
@@ -93,19 +91,5 @@ public class searchF_bookName{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	}
-	public static void main(String[] args)
-	{
-		//searchF_bookName init = new searchF_bookName();
-		System.out.println(bookName);
-		System.out.println(resultIndex);
-		System.out.println("--------------");
-		//init.return_ResultIndex("태국의 이해");
-		System.out.println(bookName);
-		System.out.println(resultIndex);
-		System.out.println("--------------");
-		//init.return_bookName();
-		System.out.println(bookName);
-		System.out.println(resultIndex);
 	}
 }

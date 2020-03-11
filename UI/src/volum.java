@@ -7,26 +7,27 @@
 	//대출자 개인정보를 대출 탭에 출력
 }
 */
-/*
-public class volum extends checkOutF {
-	
-	boolean sw= false;
-	int book_volum;
-	
-	//도서 수량을 알려줌
-	public void bringVolum()
-	{
-		read.getData();
-		String volum = read.amount;
-		book_volum = Integer.parseInt(volum);
-	}
+
+public class volum 
+{
+	static boolean sw = false;
+	static public int book_volum;
+	static String value;
 	
 	
 	//도서 수량을 감소
-	public void decrease (int volum)
+	public void decrease(String input)
 	{
-		book_volum = book_volum-1;
-		if(book_volum == 0) sw = true;
+		int result = Integer.parseInt(input);
+		result = result-1;
+		
+		if(book_volum == 0) sw=true;
 	}
 	
-}*/
+	public int reVolum() {
+		return book_volum;
+	}
+	public boolean reSW() {
+		return sw;
+	}
+}

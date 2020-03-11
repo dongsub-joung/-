@@ -9,6 +9,7 @@ import javax.swing.GroupLayout.Alignment;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -82,10 +83,12 @@ public class CoverF_secon extends JFrame {
 				String personData = textField.getText();
 				String name = textField_1.getText();
 				String PHData = textField_2.getText();
-				//String bookTitle = textField_3.getText();
+				String bookTitle = textField_3.getText();
 
-				checkOutF check = new checkOutF(personData,name,PHData);
-				check.saveData(personData, name, PHData);
+				checkOutF check = new checkOutF(personData,name,PHData,bookTitle);
+				check.saveData(personData, name, PHData,bookTitle);
+				
+				JOptionPane.showMessageDialog(null, "도서 대출 완료");
 				
 				//값을 초기화
 				textField.setText("");
