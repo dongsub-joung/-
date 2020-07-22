@@ -1,8 +1,6 @@
-# bookControl
+# Sociology bookList maintenance tool
 
-## Sociology bookList maintenance tool
-2020.02.26 ~ 03.11
-
++ 2020.02.26 ~ 03.11
 
 ---
 Theory:    
