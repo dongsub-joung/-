@@ -3,9 +3,7 @@
 + 2020.02.26 ~ 03.11
 
 ---
-Theory:    
-[생활코딩](https://opentutorials.org/course/1223)    
-
+  
 DB:    
 [JDBC](https://xinet.kr/?p=1591)    
 [APACHE POI](https://poi.apache.org/components/spreadsheet/quick-guide.html)    
