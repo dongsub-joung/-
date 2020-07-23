@@ -34,9 +34,11 @@ I wanted to make a program instead of the web during winter vacation.  The depar
 	+ Right click `present project` -> Export -> Select `Runnable JAR file`    
 	
 2. Run JAR file
-	+ CMD -> Input " java -jar filePath\fileName.jar "
-
-
+	+ CMD -> Input
+	
+```
+ java -jar filePath\fileName.jar
+```
 
 OR
 
