@@ -33,8 +33,7 @@ I wanted to make a program instead of the web during winter vacation.  The depar
 1. Make a file `jar`
 	+ Right click `present project` -> Export -> Select `Runnable JAR file`    
 	
-
-2.. Run JAR file
+2. Run JAR file
 	+ CMD -> Input " java -jar filePath\fileName.jar "
 
 
