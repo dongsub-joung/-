@@ -1,5 +1,6 @@
+package Init;
 
-import user_data.UserDate;
+import user_data.UserDate_Object;
 
 import java.awt.EventQueue;
 
@@ -84,7 +85,7 @@ public class CoverF_secon extends JFrame
 				String PHData = textField_2.getText();
 				String bookTitle = textField_3.getText();
 
-				UserDate check= new UserDate(personData,name,PHData,bookTitle);
+				UserDate_Object check= new UserDate_Object(personData,name,PHData,bookTitle);
 
 				JOptionPane.showMessageDialog(null, "Complete Check out. Enjoy.");
 
