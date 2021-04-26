@@ -15,11 +15,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 
-public class CoverF_secon extends JFrame {
-
-	/**
-	 * 
-	 */
+public class CoverF_secon extends JFrame
+{
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField textField;
@@ -79,7 +76,7 @@ public class CoverF_secon extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
 			{
-				//������ �ؽ�Ʈ �ʵ忡�� �Է°��� ������
+//				Get value each file.
 				String personData = textField.getText();
 				String name = textField_1.getText();
 				String PHData = textField_2.getText();
@@ -87,9 +84,9 @@ public class CoverF_secon extends JFrame {
 
 				UserDate check= new UserDate(personData,name,PHData,bookTitle);
 
-				JOptionPane.showMessageDialog(null, "���� ���� �Ϸ�");
-				
-				//���� �ʱ�ȭ
+				JOptionPane.showMessageDialog(null, "Complete Check out. Enjoy.");
+
+//				Reset Values
 				textField.setText("");
 				textField_1.setText("");
 				textField_2.setText("");
