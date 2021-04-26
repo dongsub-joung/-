@@ -85,18 +85,19 @@ public class CoverF extends JFrame
 
 					searchF_bookName search_book = new searchF_bookName();
 					index = search_book.return_ResultIndex(input);
-					String bookName = search_book.return_bookName(index);
+					String bookName = search_book.return_bookName(index) + System.lineSeparator();;
 					searchF_other other = new searchF_other(index);
 					
-					String author = other.retunr_author();
-					String translator= other.retunr_translator();
-					String publishingCompany = other.retunr_publishing();
+					String author = other.retunr_author() + System.lineSeparator();
+					String translator= other.retunr_translator() + System.lineSeparator();
+					String publishingCompany = other.retunr_publishing() + System.lineSeparator());
 					String amount = other.retunr_amount();
 
 					if(amount == "nell") amount = "1";
 					textField_1.setText(amount);
-					
-					textArea.setText("å�̸�: "+bookName+System.lineSeparator()+"����: "+author+System.lineSeparator()+"������: "+translator+System.lineSeparator()+"���ǻ�: "+publishingCompany+System.lineSeparator());
+
+					final String RESULT= "Title: " + bookName + "Author: "+author + "translator: " + translator + "PublishingCompany: "+ publishingCompany;
+					textArea.setText(RESULT);
 				}
 
 			}
@@ -112,55 +113,52 @@ public class CoverF extends JFrame
 		textField.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				//�Է�â�� ���� ���� �� �ؽ�Ʈ�� �ʱ�ȭ�ϴ� �̺�Ʈ
+//				Reset String
 				textField.setText("");
 			}
 		});
-		//�ܺ� ������ ��
-		
-		
-//���� �˻� ��ư
+//		END: Out Frame
+
+
+//		BTN: Search book
 		JButton btnNewButton = new JButton("\uAC80\uC0C9");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
 			{	
-				//�Է°��� ������
 				String input = textField.getText();
 
-				//�˻� ��  �ش��ϴ� �� ���� ������
 				searchF_bookName search_book = new searchF_bookName();
 				int index = search_book.return_ResultIndex(input);
 
-				String bookName = search_book.return_bookName(index);
+				String bookName = search_book.return_bookName(index) + System.lineSeparator();
 				
-				//�ش� �� ���� �����͸� ������
 				searchF_other other = new searchF_other(index);
 				
-				String author = other.retunr_author();
-				String translator= other.retunr_translator();
-				String publishingCompany = other.retunr_publishing();
+				String author = other.retunr_author() + System.lineSeparator();
+				String translator= other.retunr_translator() + System.lineSeparator();
+				String publishingCompany = other.retunr_publishing() + System.lineSeparator();
 				
 				String amount = other.retunr_amount();
 				if(amount == "nell") amount = "1";
 				textField_1.setText(amount);
-				
-				//���
-				textArea.setText("å�̸�: "+bookName+System.lineSeparator()+"����: "+author+System.lineSeparator()+"������: "+translator+System.lineSeparator()+"���ǻ�: "+publishingCompany+System.lineSeparator());
+
+				final String RESULT= "Title: " + bookName + "Author: "+author + "translator: " + translator + "PublishingCompany: "+ publishingCompany;
+				textArea.setText(RESULT);
 			}
 		});
 		textField.setColumns(10);
-		textField.setText("�������� �Է����ּ���.");
+		textField.setText("Please enter book's title");
 		
 		btnNewButton_1 = new JButton("\uB300\uCD9C");
 		btnNewButton_1.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) 
 			{
-				//�������Ͽ� �Էµ� ������ ����
+//				write && save Infomation
 				CoverF_secon Frame2 = new CoverF_secon();
 				Frame2.setVisible(isDisplayable()); 
 
-			}//���� ��ư
+			} // Check out btn
 		});
 		
 		btnNewButton_2 = new JButton("\uBC18\uB0A9");
@@ -204,9 +202,6 @@ public class CoverF extends JFrame
 //�����͸� �����ͼ� ǥ��
 		choice = new Choice();
 		choice.add("--------  Current Information  --------");
-		
-		//System.out.println(ID.size());
-		
 		try
 		{
 			checkOutF_get get = new checkOutF_get();
@@ -243,35 +238,33 @@ public class CoverF extends JFrame
 			}
 		}
 		catch (Exception e) {
-			// TODO: handle exception
+			System.out.println(e + "Fail Saving user data.");
 		}
-		
-		//���� �� �������� �Է� ��
+		// END: when user check out book, save it.
 				
-				
-//��� ǥ��
+
+//		Show result page (Text area)
+		final String FONT00= "Arial Black";
+		final String FONT01=  "맑은 고딕";
+		final String FONT02= "돋음";
+		final String FONT03= "돋음체";
+
 		textArea = new JTextArea();
 		textArea.setEditable(false);
-		textArea.setFont(new Font("���� ���", Font.BOLD, 15));
+		textArea.setFont(new Font(FONT01, Font.BOLD, 15));
 		textArea.setForeground(Color.black); 
 		textArea.setAlignmentX(JPanel.CENTER_ALIGNMENT);
-
 		
 		textField_1 = new JTextField();
-		textField_1.setFont(new Font("����", Font.PLAIN, 15));
+		textField_1.setFont(new Font(FONT02, Font.PLAIN, 15));
 		textField_1.setEditable(false);
 		textField_1.setColumns(10);
 		textField_1.setHorizontalAlignment(JTextField.CENTER);
-		textField_1.setForeground(Color.red); 
-		
+		textField_1.setForeground(Color.red);
 		
 		JLabel lblNewLabel = new JLabel("\uC218\uB7C9");
-		lblNewLabel.setFont(new Font("����ü", Font.PLAIN, 12));
+		lblNewLabel.setFont(new Font(FONT03, Font.PLAIN, 12));
 		lblNewLabel.setBackground(Color.WHITE);
-		//�˻��ߴ� å�� ������ ǥ��
-
-		
-		
 		
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
@@ -321,8 +314,9 @@ public class CoverF extends JFrame
 					.addComponent(textArea, GroupLayout.PREFERRED_SIZE, 167, GroupLayout.PREFERRED_SIZE))
 		);
 		contentPane.setLayout(gl_contentPane);
-				//��� ǥ�� ��	
+//		END: Show Result
 	}
+
 
 	class secF extends JDialog
 	{
