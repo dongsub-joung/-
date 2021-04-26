@@ -42,21 +42,13 @@ public class searchF_other
 		return locations;
 	}
 
-	public String retunr_author() {
-		return author;
-	}
-	public String retunr_publishing() {
-		return publishingCompany;
-	}
-	public  String retunr_translator() {
-		return translator;
-	}
-	public  String retunr_amount() {
-		return amount;
-	}
-	public  String retunr_loacation() {
-		return location;
-	}
+	public String retunr_author() { return author; }
+
+	public String retunr_publishing() { return publishingCompany; }
+	public  String retunr_translator() { return translator; }
+	public  String retunr_amount() { return amount; }
+	public  String retunr_loacation() { return location; }
+
 	
 	
 	public searchF_other (int bookIndex)
