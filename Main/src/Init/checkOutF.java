@@ -1,7 +1,7 @@
-import java.io.File;
+package Init;
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -18,10 +18,10 @@ public class checkOutF
 	public void insertData(int selectedIndex)
 	{
 			try(FileInputStream USER_File = new FileInputStream(COMMON.USER_PATH);
-				XSSFWorkbook workbook = new XSSFWorkbook(USER_File))
+				XSSFWorkbook workbook = new XSSFWorkbook(USER_File);
 			{
 				@SuppressWarnings("resource")
-				XSSFRow row = workbook.getSheetAt(0).getRow(selectedIndex+1);
+				XSSFRow row = workbook.getSheetAt(0).getRow(selectedIndex+1))
 				// Adding String at Row5
 				row.createCell(SPACE_RETURN).setCellValue("Returned book");
 				COMMON.commint(workbook, COMMON.USER_PATH);

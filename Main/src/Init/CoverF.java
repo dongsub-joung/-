@@ -1,3 +1,6 @@
+package Init;
+
+import books_data.searchF_other;
 
 import java.awt.*;
 import javax.swing.JDialog;
@@ -10,7 +13,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.print.Book;
 import java.util.ArrayList;
 import java.awt.event.InputMethodListener;
 import java.awt.event.InputMethodEvent;
@@ -76,30 +78,10 @@ public class CoverF extends JFrame
 			@Override
 			public void keyPressed(KeyEvent e) 
 			{
-				String input; int index;
-
 				if (e.getKeyCode() == KeyEvent.VK_ENTER)
 				{
-//					Get input TEXT
-					input = textField.getText();
-
-					searchF_bookName search_book = new searchF_bookName();
-					index = search_book.return_ResultIndex(input);
-					String bookName = search_book.return_bookName(index) + System.lineSeparator();;
-					searchF_other other = new searchF_other(index);
-					
-					String author = other.retunr_author() + System.lineSeparator();
-					String translator= other.retunr_translator() + System.lineSeparator();
-					String publishingCompany = other.retunr_publishing() + System.lineSeparator());
-					String amount = other.retunr_amount();
-
-					if(amount == "nell") amount = "1";
-					textField_1.setText(amount);
-
-					final String RESULT= "Title: " + bookName + "Author: "+author + "translator: " + translator + "PublishingCompany: "+ publishingCompany;
-					textArea.setText(RESULT);
+					M_CoverF.SearchEvent(textField, textField_1, textArea);
 				}
-
 			}
 		});
 		textField.addInputMethodListener(new InputMethodListener() {
@@ -124,147 +106,43 @@ public class CoverF extends JFrame
 		JButton btnNewButton = new JButton("\uAC80\uC0C9");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
-			{	
-				String input = textField.getText();
-
-				searchF_bookName search_book = new searchF_bookName();
-				int index = search_book.return_ResultIndex(input);
-
-				String bookName = search_book.return_bookName(index) + System.lineSeparator();
-				
-				searchF_other other = new searchF_other(index);
-				
-				String author = other.retunr_author() + System.lineSeparator();
-				String translator= other.retunr_translator() + System.lineSeparator();
-				String publishingCompany = other.retunr_publishing() + System.lineSeparator();
-				
-				String amount = other.retunr_amount();
-				if(amount == "nell") amount = "1";
-				textField_1.setText(amount);
-
-				final String RESULT= "Title: " + bookName + "Author: "+author + "translator: " + translator + "PublishingCompany: "+ publishingCompany;
-				textArea.setText(RESULT);
+			{
+				M_CoverF.SearchEvent(textField, textField_1, textArea);
 			}
 		});
 		textField.setColumns(10);
 		textField.setText("Please enter book's title");
-		
+
+		// Check out btn
 		btnNewButton_1 = new JButton("\uB300\uCD9C");
 		btnNewButton_1.addActionListener(new ActionListener() {
-
 			public void actionPerformed(ActionEvent e) 
 			{
-//				write && save Infomation
+//				write && save Information
+//				Open New frame
 				CoverF_secon Frame2 = new CoverF_secon();
-				Frame2.setVisible(isDisplayable()); 
-
-			} // Check out btn
+				Frame2.setVisible(isDisplayable());
+			}
 		});
 		
 		btnNewButton_2 = new JButton("\uBC18\uB0A9");
 		btnNewButton_2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) //�ݳ� ��ư �̺�Ʈ
-			{
-//				Delete XMl data or check data (removed remark)
-
-				// UI: Read current value
-				String selectedVal = choice.getItem(choice.getSelectedIndex());
-//				Divide String
-				String[] String_array = selectedVal.split(" , ");
-
-//				DB search using student_ID
-//				than, Save "returned book" String
-				String studentNum = String_array[0];
-				String checkOut_case = String_array[1];
-				checkOutF BookCase = new checkOutF();
-
-//				Define: DB Data
-				checkOutF_get get = new checkOutF_get();
-				ArrayList<String> ID = get.reId();
-				ArrayList<String> case_bookNum = get.reBookName();
-
-//				index= indicate row searched
-				int indexID= ID.indexOf(studentNum);
-				int indexCase = case_bookNum.indexOf(checkOut_case);
-								
-				if (indexID == indexCase)
-				{
-					BookCase.toggleCheckOutValue();
-					BookCase.insertData(indexID);
-				}
-
-//				Remove visual list (Implement)
-				//choice.remove(choice.getSelectedIndex());
-			}
+			public void actionPerformed(ActionEvent e) { M_CoverF.clickEventNewButton_2(choice); }
 		});
-		
-		
-//�����͸� �����ͼ� ǥ��
-		choice = new Choice();
-		choice.add("--------  Current Information  --------");
-		try
-		{
-			checkOutF_get get = new checkOutF_get();
-			ArrayList<String> ID = get.reId();
-			ArrayList<String> BookName = get.reBookName();
-			ArrayList<Boolean> SW = get.reSW();
-			System.out.println("id"+ID);
-			System.out.println("BN"+BookName);
-			System.out.println("sw"+SW);
-			
-			for(int i=0; i<=ID.size(); i++)
-			{	
-				String a = ID.get(i);
-				String b = BookName.get(i);
-				boolean sw = SW.get(i);
-				
-				choice.add(a+" , "+b);			
 
-				/*
-				if(sw==false)
-				{
-					String a = ID.get(i);
-					String b = BookName.get(i);
-					System.out.println("a"+a);
-					System.out.println("b"+b);
-					
-					choice.add(a+" , "+b);					
-				}
-				else 
-				{
-					continue;
-				}
-				*/
-			}
-		}
-		catch (Exception e) {
-			System.out.println(e + "Fail Saving user data.");
-		}
+		choice = new Choice();
+		M_CoverF.setChoiceValue(choice);
 		// END: when user check out book, save it.
-				
 
 //		Show result page (Text area)
-		final String FONT00= "Arial Black";
-		final String FONT01=  "맑은 고딕";
-		final String FONT02= "돋음";
-		final String FONT03= "돋음체";
-
 		textArea = new JTextArea();
-		textArea.setEditable(false);
-		textArea.setFont(new Font(FONT01, Font.BOLD, 15));
-		textArea.setForeground(Color.black); 
-		textArea.setAlignmentX(JPanel.CENTER_ALIGNMENT);
-		
+		AboutTextArea.setOption(textArea);
+
 		textField_1 = new JTextField();
-		textField_1.setFont(new Font(FONT02, Font.PLAIN, 15));
-		textField_1.setEditable(false);
-		textField_1.setColumns(10);
-		textField_1.setHorizontalAlignment(JTextField.CENTER);
-		textField_1.setForeground(Color.red);
+		AboutJTextField.setOption(textField_1);
 		
 		JLabel lblNewLabel = new JLabel("\uC218\uB7C9");
-		lblNewLabel.setFont(new Font(FONT03, Font.PLAIN, 12));
-		lblNewLabel.setBackground(Color.WHITE);
+		AboutJLabel.setOption(lblNewLabel);
 		
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
@@ -314,8 +192,8 @@ public class CoverF extends JFrame
 					.addComponent(textArea, GroupLayout.PREFERRED_SIZE, 167, GroupLayout.PREFERRED_SIZE))
 		);
 		contentPane.setLayout(gl_contentPane);
-//		END: Show Result
 	}
+	//		END: Show Result
 
 
 	class secF extends JDialog

@@ -1,7 +1,6 @@
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.util.ArrayList;
+package Init;
+
+import books_data.BookNameList;
 
 public class searchF_bookName
 {
@@ -10,6 +9,6 @@ public class searchF_bookName
 	searchF_bookName(){}
 
 //	Method
-	public String return_bookName(int resultIndex) { return COMMON.bookName_list.get(resultIndex); }
-	public int return_ResultIndex(String bookName) { return COMMON.bookName_list.indexOf(bookName); }
+	public String return_bookName(int resultIndex) { return BookNameList.bookName_list.get(resultIndex); }
+	public int return_ResultIndex(String bookName) { return BookNameList.bookName_list.indexOf(bookName); }
 }

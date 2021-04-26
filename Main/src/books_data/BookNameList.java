@@ -37,7 +37,7 @@ public class BookNameList
                         {
                             case STRING: //XSSFCell.CELL_TYPE_STRING:
                                 // Add book's title at ArrayList
-                                bookName_list.add(cell.getStringCellValue();
+                                bookName_list.add(cell.getStringCellValue());
                                 break;
                             default:
                                 break;

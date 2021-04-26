@@ -33,12 +33,13 @@ public class CoverF_secon extends JFrame
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
-				try {
+				try
+				{
 					CoverF_secon frame = new CoverF_secon();
 					frame.setVisible(true);
-					
-					
-				} catch (Exception e) {
+				} catch (Exception e)
+				{
+					System.out.println("기동 불가");
 					e.printStackTrace();
 				}
 			}

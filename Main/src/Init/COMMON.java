@@ -1,3 +1,5 @@
+package Init;
+
 import java.io.*;
 
 public class COMMON

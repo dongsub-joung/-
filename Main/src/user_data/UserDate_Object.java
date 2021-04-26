@@ -1,12 +1,12 @@
 package user_data;
 
-public class UserDate
+public class UserDate_Object
 {
     private String personNum,  name, phonNum, bookTitle;;
     { personNum= ""; name= ""; phonNum= ""; bookTitle= ""; }
 
-    public UserDate(){}
-    public UserDate(String ID, String name, String PH, String bookName)
+    public UserDate_Object(){}
+    public UserDate_Object(String ID, String name, String PH, String bookName)
     {
         this.personNum = ID;
         this.name = name;
