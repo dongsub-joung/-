@@ -2,7 +2,7 @@
 
 # Sociology bookList _(Sociology bookList maintenance tool)_
 
-
+[Coding Live](https://www.youtube.com/channel/UCpwGR4ulHCdlfOVQPZD3QCQ/featured)  
 
 ## Table of Contents
 

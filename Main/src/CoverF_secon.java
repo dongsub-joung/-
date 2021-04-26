@@ -79,18 +79,17 @@ public class CoverF_secon extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
 			{
-				//°¢°¢ÀÇ ÅØ½ºÆ® ÇÊµå¿¡¼­ ÀÔ·Â°ªÀ» °¡Á®¿È
+				//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ø½ï¿½Æ® ï¿½Êµå¿¡ï¿½ï¿½ ï¿½Ô·Â°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 				String personData = textField.getText();
 				String name = textField_1.getText();
 				String PHData = textField_2.getText();
 				String bookTitle = textField_3.getText();
 
-				checkOutF check = new checkOutF(personData,name,PHData,bookTitle);
-				check.saveData(personData, name, PHData,bookTitle);
+				UserDate check= new UserDate(personData,name,PHData,bookTitle);
+
+				JOptionPane.showMessageDialog(null, "ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ï·ï¿½");
 				
-				JOptionPane.showMessageDialog(null, "µµ¼­ ´ëÃâ ¿Ï·á");
-				
-				//°ªÀ» ÃÊ±âÈ­
+				//ï¿½ï¿½ï¿½ï¿½ ï¿½Ê±ï¿½È­
 				textField.setText("");
 				textField_1.setText("");
 				textField_2.setText("");

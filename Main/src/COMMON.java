@@ -17,13 +17,10 @@ public class COMMON
 //    Save File and close
     public static void commint(XSSFWorkbook workbook, String filepath)
     {
-        try
+        try ( FileOutputStream outFile = new FileOutputStream(new File(filepath)) )
         {
-            FileOutputStream outFile = new FileOutputStream(new File(filepath));
             workbook.write(outFile);
-            outFile.close();
         }
-
         catch (Exception e)
         {
             e.printStackTrace();

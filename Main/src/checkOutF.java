@@ -7,41 +7,20 @@ import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-
-// Save Personal Infomation
-
 public class checkOutF
 {
 	final int SPACE_RETURN= 4;
-
-	// Calss Valueable
-	String personNum;
-	String name;
-	String phonNum;
-	String bookTitle;
-
-//	Mac O X
 	private boolean bol_check_out_book= false;
 
-	public checkOutF(){}
-	public checkOutF (String ID, String name, String PH, String bookName)
-	{
-		this.personNum = ID;
-		this.name = name;
-		this.phonNum = PH;
-		this.bookTitle = bookName;
-	}
-	
 	public boolean toggleCheckOutValue() { return bol_check_out_book = true; }
 
 	// Insert String "Returned book" on user_data
 	public void insertData(int selectedIndex)
 	{
-			try
+			try(FileInputStream USER_File = new FileInputStream(COMMON.USER_PATH);
+				XSSFWorkbook workbook = new XSSFWorkbook(USER_File))
 			{
-				FileInputStream USER_File = new FileInputStream(COMMON.USER_PATH);
 				@SuppressWarnings("resource")
-				XSSFWorkbook workbook = new XSSFWorkbook(USER_File);
 				XSSFRow row = workbook.getSheetAt(0).getRow(selectedIndex+1);
 				// Adding String at Row5
 				row.createCell(SPACE_RETURN).setCellValue("Returned book");

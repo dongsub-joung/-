@@ -25,8 +25,8 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 
 
 @SuppressWarnings("serial")
-public class CoverF extends JFrame  {
-
+public class CoverF extends JFrame
+{
 	private JPanel contentPane;
 	private JTextField textField;
 	private JTextArea textArea;
@@ -41,22 +41,16 @@ public class CoverF extends JFrame  {
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					//�ܺ� ������
+			public void run()
+			{
+				try
+				{
 					CoverF frame = new CoverF();
 					frame.setVisible(true);
-					
-															
-					
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
+				} catch (Exception e) { e.printStackTrace(); }
 			}
 		});
 	}
-
-	
 
 	
 	/**
@@ -91,21 +85,17 @@ public class CoverF extends JFrame  {
 
 					searchF_bookName search_book = new searchF_bookName();
 					index = search_book.return_ResultIndex(input);
-
 					String bookName = search_book.return_bookName(index);
-					
-					//�ش� �� ���� �����͸� ������
 					searchF_other other = new searchF_other(index);
 					
 					String author = other.retunr_author();
 					String translator= other.retunr_translator();
 					String publishingCompany = other.retunr_publishing();
-					
 					String amount = other.retunr_amount();
+
 					if(amount == "nell") amount = "1";
 					textField_1.setText(amount);
 					
-					//���
 					textArea.setText("å�̸�: "+bookName+System.lineSeparator()+"����: "+author+System.lineSeparator()+"������: "+translator+System.lineSeparator()+"���ǻ�: "+publishingCompany+System.lineSeparator());
 				}
 
@@ -177,24 +167,25 @@ public class CoverF extends JFrame  {
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) //�ݳ� ��ư �̺�Ʈ
 			{
-				//��ǥ: ���� �����Ϳ��� ������ ���� Ȥ�� ǥ��
-				
-				//UI: ������ ���� �ҷ���
+//				Delete XMl data or check data (removed remark)
+
+				// UI: Read current value
 				String selectedVal = choice.getItem(choice.getSelectedIndex());
-				//�����̽��� �������� string ����
+//				Divide String
 				String[] String_array = selectedVal.split(" , ");
-				
-				//�й��� �������� DB���� �˻� �� "�ݳ�"�� ����
-				//�˻��� string ����
+
+//				DB search using student_ID
+//				than, Save "returned book" String
 				String studentNum = String_array[0];
 				String checkOut_case = String_array[1];
 				checkOutF BookCase = new checkOutF();
-				//boolean sw = checkOutF.returnBook;
-				//DB������ ����
+
+//				Define: DB Data
 				checkOutF_get get = new checkOutF_get();
 				ArrayList<String> ID = get.reId();
 				ArrayList<String> case_bookNum = get.reBookName();
-				//�˻� ��� index = �������� ���� �� �� ����
+
+//				index= indicate row searched
 				int indexID= ID.indexOf(studentNum);
 				int indexCase = case_bookNum.indexOf(checkOut_case);
 								
@@ -202,10 +193,9 @@ public class CoverF extends JFrame  {
 				{
 					BookCase.toggleCheckOutValue();
 					BookCase.insertData(indexID);
-					BookCase.commint();
 				}
 
-//				Remove visual list
+//				Remove visual list (Implement)
 				//choice.remove(choice.getSelectedIndex());
 			}
 		});
@@ -213,11 +203,11 @@ public class CoverF extends JFrame  {
 		
 //�����͸� �����ͼ� ǥ��
 		choice = new Choice();
-		choice.add("--------  ���� ���� ��Ȳ  --------");
+		choice.add("--------  Current Information  --------");
 		
 		//System.out.println(ID.size());
 		
-		try 
+		try
 		{
 			checkOutF_get get = new checkOutF_get();
 			ArrayList<String> ID = get.reId();
@@ -234,12 +224,7 @@ public class CoverF extends JFrame  {
 				boolean sw = SW.get(i);
 				
 				choice.add(a+" , "+b);			
-				
-				
-				
-				
-				
-				
+
 				/*
 				if(sw==false)
 				{
