@@ -41,20 +41,16 @@ public class checkOutF_get
 	{	
 		try {
 			reset_result();
-			
-			String a = "C:/Users/ehdtj/OneDrive/πŸ≈¡ »≠∏È/Web/bookControl/UI/info.xlsx";
-			FileInputStream file = new FileInputStream(a);
+			FileInputStream file = new FileInputStream(FI);
 			@SuppressWarnings("resource")
 			XSSFWorkbook workbook = new XSSFWorkbook(file);
 			XSSFSheet sheet = workbook.getSheetAt(0); 
 			String value = null;
 			boolean sw = false;
 			
-			//«‡ √ﬂ√‚
 			int iMax= sheet.getPhysicalNumberOfRows();
 			for(int i=1; i<=iMax; i++)
 			{
-				//«‡ π›∫π
 				XSSFRow row = sheet.getRow(i);
 				
 				if(row != null)
@@ -88,7 +84,7 @@ public class checkOutF_get
 								break;
 							}
 							
-							//∞™¿ª ¿˙¿Â
+							//ÔøΩÔøΩÔøΩÔøΩ ÔøΩÔøΩÔøΩÔøΩ
 							
 							
 							switch(columnIndex)
@@ -100,7 +96,7 @@ public class checkOutF_get
 								ListBookName.add(value);
 								break;
 							case 4: 
-								if(value=="π›≥≥")
+								if(value=="Return book")
 								{
 									sw = true;
 									return_checkOut.add(sw);
@@ -132,7 +128,7 @@ public class checkOutF_get
 	}
 	
 	
-	//choice¿« º±≈√ ∞™¿ª πﬁæ∆º≠ ªË¡¶
+	//choiceÔøΩÔøΩ ÔøΩÔøΩÔøΩÔøΩ ÔøΩÔøΩÔøΩÔøΩ ÔøΩﬁæ∆ºÔøΩ ÔøΩÔøΩÔøΩÔøΩ
 	public void delData()
 	{
 		

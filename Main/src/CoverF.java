@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.print.Book;
 import java.util.ArrayList;
 import java.awt.event.InputMethodListener;
 import java.awt.event.InputMethodEvent;
@@ -42,7 +43,7 @@ public class CoverF extends JFrame  {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					//¿ÜºÎ ÇÁ·¹ÀÓ
+					//ï¿½Üºï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 					CoverF frame = new CoverF();
 					frame.setVisible(true);
 					
@@ -61,41 +62,39 @@ public class CoverF extends JFrame  {
 	/**
 	 * Create the frame.
 	 */
-	public CoverF() {
-		
-		
-		
-		//checkOutF checkOut = new checkOutF();
-		
-//¿ÜºÎ ÇÁ·¹ÀÓ
+	public CoverF()
+	{
+//		Out Frame
 		setTitle("\uC0AC\uD68C\uD559\uACFC \uB3C4\uC11C\uAD00\uB9AC \uD504\uB85C\uADF8\uB7A8");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
+
+//	    START : SEARCH BTN
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		//°Ë»ö ¹öÆ° ³¡
-		
-		
-//µµ¼­ °Ë»ö ÅØ½ºÆ® Ã¢
+//		END : SEARCH BTN
+
+//		Text Area : SEARCH
 		textField = new JTextField();
 		textField.addKeyListener(new KeyAdapter() 
 		{
 			@Override
 			public void keyPressed(KeyEvent e) 
 			{
+				String input; int index;
+
 				if (e.getKeyCode() == KeyEvent.VK_ENTER)
 				{
-					//ÀÔ·Â°ªÀ» °¡Á®¿È
-					String input = textField.getText();
+//					Get input TEXT
+					input = textField.getText();
 
-					//°Ë»ö ÈÄ  ÇØ´çÇÏ´Â Çà °ªÀ» °¡Á®¿È
 					searchF_bookName search_book = new searchF_bookName();
-					int index = search_book.return_ResultIndex(input);
+					index = search_book.return_ResultIndex(input);
 
 					String bookName = search_book.return_bookName(index);
 					
-					//ÇØ´ç Çà °ªÀÇ µ¥ÀÌÅÍ¸¦ °¡Á®¿È
+					//ï¿½Ø´ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 					searchF_other other = new searchF_other(index);
 					
 					String author = other.retunr_author();
@@ -106,8 +105,8 @@ public class CoverF extends JFrame  {
 					if(amount == "nell") amount = "1";
 					textField_1.setText(amount);
 					
-					//Ãâ·Â
-					textArea.setText("Ã¥ÀÌ¸§: "+bookName+System.lineSeparator()+"ÀúÀÚ: "+author+System.lineSeparator()+"¹ø¿ª°¡: "+translator+System.lineSeparator()+"ÃâÆÇ»ç: "+publishingCompany+System.lineSeparator());
+					//ï¿½ï¿½ï¿½
+					textArea.setText("Ã¥ï¿½Ì¸ï¿½: "+bookName+System.lineSeparator()+"ï¿½ï¿½ï¿½ï¿½: "+author+System.lineSeparator()+"ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½: "+translator+System.lineSeparator()+"ï¿½ï¿½ï¿½Ç»ï¿½: "+publishingCompany+System.lineSeparator());
 				}
 
 			}
@@ -123,28 +122,28 @@ public class CoverF extends JFrame  {
 		textField.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				//ÀÔ·ÂÃ¢À» ¼±ÅÃ ÇßÀ» ¶§ ÅØ½ºÆ®¸¦ ÃÊ±âÈ­ÇÏ´Â ÀÌº¥Æ®
+				//ï¿½Ô·ï¿½Ã¢ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ø½ï¿½Æ®ï¿½ï¿½ ï¿½Ê±ï¿½È­ï¿½Ï´ï¿½ ï¿½Ìºï¿½Æ®
 				textField.setText("");
 			}
 		});
-		//¿ÜºÎ ÇÁ·¹ÀÓ ³¡
+		//ï¿½Üºï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
 		
 		
-//µµ¼­ °Ë»ö ¹öÆ°
+//ï¿½ï¿½ï¿½ï¿½ ï¿½Ë»ï¿½ ï¿½ï¿½Æ°
 		JButton btnNewButton = new JButton("\uAC80\uC0C9");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
 			{	
-				//ÀÔ·Â°ªÀ» °¡Á®¿È
+				//ï¿½Ô·Â°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 				String input = textField.getText();
 
-				//°Ë»ö ÈÄ  ÇØ´çÇÏ´Â Çà °ªÀ» °¡Á®¿È
+				//ï¿½Ë»ï¿½ ï¿½ï¿½  ï¿½Ø´ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 				searchF_bookName search_book = new searchF_bookName();
 				int index = search_book.return_ResultIndex(input);
 
 				String bookName = search_book.return_bookName(index);
 				
-				//ÇØ´ç Çà °ªÀÇ µ¥ÀÌÅÍ¸¦ °¡Á®¿È
+				//ï¿½Ø´ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 				searchF_other other = new searchF_other(index);
 				
 				String author = other.retunr_author();
@@ -155,68 +154,66 @@ public class CoverF extends JFrame  {
 				if(amount == "nell") amount = "1";
 				textField_1.setText(amount);
 				
-				//Ãâ·Â
-				textArea.setText("Ã¥ÀÌ¸§: "+bookName+System.lineSeparator()+"ÀúÀÚ: "+author+System.lineSeparator()+"¹ø¿ª°¡: "+translator+System.lineSeparator()+"ÃâÆÇ»ç: "+publishingCompany+System.lineSeparator());
+				//ï¿½ï¿½ï¿½
+				textArea.setText("Ã¥ï¿½Ì¸ï¿½: "+bookName+System.lineSeparator()+"ï¿½ï¿½ï¿½ï¿½: "+author+System.lineSeparator()+"ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½: "+translator+System.lineSeparator()+"ï¿½ï¿½ï¿½Ç»ï¿½: "+publishingCompany+System.lineSeparator());
 			}
 		});
 		textField.setColumns(10);
-		textField.setText("µµ¼­¸íÀ» ÀÔ·ÂÇØÁÖ¼¼¿ä.");
+		textField.setText("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ô·ï¿½ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½.");
 		
 		btnNewButton_1 = new JButton("\uB300\uCD9C");
 		btnNewButton_1.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) 
 			{
-				//¿¢¼¿ÆÄÀÏ¿¡ ÀÔ·ÂµÈ Á¤º¸¸¦ ÀúÀå
+				//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ ï¿½Ô·Âµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 				CoverF_secon Frame2 = new CoverF_secon();
 				Frame2.setVisible(isDisplayable()); 
 
-			}//´ëÃâ ¹öÆ°
+			}//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ°
 		});
 		
 		btnNewButton_2 = new JButton("\uBC18\uB0A9");
 		btnNewButton_2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) //¹Ý³³ ¹öÆ° ÀÌº¥Æ®
+			public void actionPerformed(ActionEvent e) //ï¿½Ý³ï¿½ ï¿½ï¿½Æ° ï¿½Ìºï¿½Æ®
 			{
-				//¸ñÇ¥: ¿¢¼¿ µ¥ÀÌÅÍ¿¡¼­ Á¤º¸¸¦ »èÁ¦ È¤Àº Ç¥½Ã
+				//ï¿½ï¿½Ç¥: ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ È¤ï¿½ï¿½ Ç¥ï¿½ï¿½
 				
-				//UI: ÇöÀçÀÇ °ªÀ» ºÒ·¯¿È
+				//UI: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ò·ï¿½ï¿½ï¿½
 				String selectedVal = choice.getItem(choice.getSelectedIndex());
-				//½ºÆäÀÌ½º¸¦ ±âÁØÀ¸·Î string ºÐÇÒ
+				//ï¿½ï¿½ï¿½ï¿½ï¿½Ì½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ string ï¿½ï¿½ï¿½ï¿½
 				String[] String_array = selectedVal.split(" , ");
 				
-				//ÇÐ¹øÀ» ±âÁØÀ¸·Î DB¿¡¼­ °Ë»ö ÈÄ "¹Ý³³"À» ÀúÀå
-				//°Ë»öÇÒ string Á¤ÀÇ
+				//ï¿½Ð¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ DBï¿½ï¿½ï¿½ï¿½ ï¿½Ë»ï¿½ ï¿½ï¿½ "ï¿½Ý³ï¿½"ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+				//ï¿½Ë»ï¿½ï¿½ï¿½ string ï¿½ï¿½ï¿½ï¿½
 				String studentNum = String_array[0];
 				String checkOut_case = String_array[1];
 				checkOutF BookCase = new checkOutF();
 				//boolean sw = checkOutF.returnBook;
-				//DBµ¥ÀÌÅÍ Á¤ÀÇ
+				//DBï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 				checkOutF_get get = new checkOutF_get();
 				ArrayList<String> ID = get.reId();
 				ArrayList<String> case_bookNum = get.reBookName();
-				//°Ë»ö °á°ú index = µ¥ÀÌÅÍÀÇ ÇàÀ» ¾Ë ¼ö ÀÖÀ½
+				//ï¿½Ë»ï¿½ ï¿½ï¿½ï¿½ index = ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 				int indexID= ID.indexOf(studentNum);
 				int indexCase = case_bookNum.indexOf(checkOut_case);
 								
 				if (indexID == indexCase)
 				{
-					//sw¸¦ true·Î ÀüÈ¯
-					BookCase.sw_returnBook();
-					//¹Ý¾à sw°¡ true¸é ¹Ý³³ stirngÀ» ÀúÀå
-					BookCase.write_RE(indexID);
+					BookCase.toggleCheckOutValue();
+					BookCase.insertData(indexID);
+					BookCase.commint();
 				}
-				
-				//º¸ÀÌ´Â ¸®½ºÆ® »èÁ¦
+
+//				Remove visual list
 				//choice.remove(choice.getSelectedIndex());
-				
 			}
 		});
 		
 		
-//µ¥ÀÌÅÍ¸¦ °¡Á®¿Í¼­ Ç¥½Ã
+//ï¿½ï¿½ï¿½ï¿½ï¿½Í¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ Ç¥ï¿½ï¿½
 		choice = new Choice();
-		choice.add("--------  µµ¼­ ´ëÃâ ÇöÈ²  --------");
+		choice.add("--------  ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È²  --------");
 		
 		//System.out.println(ID.size());
 		
@@ -264,19 +261,19 @@ public class CoverF extends JFrame  {
 			// TODO: handle exception
 		}
 		
-		//´ëÃâ ½Ã °³ÀÎÁ¤º¸ ÀÔ·Â ³¡
+		//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ô·ï¿½ ï¿½ï¿½
 				
 				
-//°á°ú Ç¥½Ã
+//ï¿½ï¿½ï¿½ Ç¥ï¿½ï¿½
 		textArea = new JTextArea();
 		textArea.setEditable(false);
-		textArea.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 15));
+		textArea.setFont(new Font("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½", Font.BOLD, 15));
 		textArea.setForeground(Color.black); 
 		textArea.setAlignmentX(JPanel.CENTER_ALIGNMENT);
 
 		
 		textField_1 = new JTextField();
-		textField_1.setFont(new Font("µ¸¿ò", Font.PLAIN, 15));
+		textField_1.setFont(new Font("ï¿½ï¿½ï¿½ï¿½", Font.PLAIN, 15));
 		textField_1.setEditable(false);
 		textField_1.setColumns(10);
 		textField_1.setHorizontalAlignment(JTextField.CENTER);
@@ -284,9 +281,9 @@ public class CoverF extends JFrame  {
 		
 		
 		JLabel lblNewLabel = new JLabel("\uC218\uB7C9");
-		lblNewLabel.setFont(new Font("µ¸¿òÃ¼", Font.PLAIN, 12));
+		lblNewLabel.setFont(new Font("ï¿½ï¿½ï¿½ï¿½Ã¼", Font.PLAIN, 12));
 		lblNewLabel.setBackground(Color.WHITE);
-		//°Ë»öÇß´ø Ã¥ÀÇ ¼ö·®À» Ç¥½Ã
+		//ï¿½Ë»ï¿½ï¿½ß´ï¿½ Ã¥ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ç¥ï¿½ï¿½
 
 		
 		
@@ -339,7 +336,7 @@ public class CoverF extends JFrame  {
 					.addComponent(textArea, GroupLayout.PREFERRED_SIZE, 167, GroupLayout.PREFERRED_SIZE))
 		);
 		contentPane.setLayout(gl_contentPane);
-				//°á°ú Ç¥½Ã ³¡	
+				//ï¿½ï¿½ï¿½ Ç¥ï¿½ï¿½ ï¿½ï¿½	
 	}
 
 	class secF extends JDialog
