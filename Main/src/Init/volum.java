@@ -13,9 +13,7 @@ public class volum
 	static boolean sw = false;
 	static public int book_volum;
 	static String value;
-	
-	
-	//���� ������ ����
+
 	public void decrease(String input)
 	{
 		int result = Integer.parseInt(input);

@@ -18,7 +18,7 @@ public class checkOutF
 	public void insertData(int selectedIndex)
 	{
 			try(FileInputStream USER_File = new FileInputStream(COMMON.USER_PATH);
-				XSSFWorkbook workbook = new XSSFWorkbook(USER_File);
+				XSSFWorkbook workbook = new XSSFWorkbook(USER_File))
 			{
 				@SuppressWarnings("resource")
 				XSSFRow row = workbook.getSheetAt(0).getRow(selectedIndex+1))

@@ -110,16 +110,13 @@ public class M_CoverF
 				*/
             }
         }
-        catch (Exception e) {
-            System.out.println("Fail Saving user data.");
-            e.printStackTrace();
-        }
+        catch (Exception e) { System.out.println("Fail Saving user data."); e.printStackTrace(); }
     }
+
 
 //    Delete XMl data or check data (removed remark)
     public static void clickEventNewButton_2(Choice choice)
     {
-
         // UI: Read current value
         String selectedVal = choice.getItem(choice.getSelectedIndex());
 //				Divide String
