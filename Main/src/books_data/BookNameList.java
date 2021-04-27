@@ -39,6 +39,9 @@ public class BookNameList
                                 // Add book's title at ArrayList
                                 bookName_list.add(cell.getStringCellValue());
                                 break;
+                            case BLANK://XSSFCell.CELL_TYPE_BLANK:
+                                value = "nell";
+                                break;
                             default:
                                 break;
                         }
