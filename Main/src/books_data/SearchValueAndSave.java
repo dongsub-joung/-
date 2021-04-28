@@ -3,6 +3,7 @@ package books_data;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.HashMap;
 
 import org.apache.poi.xssf.usermodel.XSSFCell;
@@ -85,11 +86,14 @@ public class SearchValueAndSave
 
 	public static String getSearchedObj()
 	{
-		String bookName = obj_searched_book.get("BookName") + System.lineSeparator();
-		String author = obj_searched_book.get("Authors") + System.lineSeparator();
-		String translator= other.retunr_translator() + System.lineSeparator();
-		String publishingCompany = other.retunr_publishing() + System.lineSeparator();
-		String amount = other.retunr_amount();
-		return bookName + "Author: "+author + "translator: " + translator + "PublishingCompany: "+ publishingCompany;
+		String bookName, author, translator, publishingCompany, amount;
+		String[] valuables= {bookName="", author= "", translator= "", publishingCompany= "", amount= ""};
+		String[] obj_valuables= { "BookName", "Authors", "translator", "publishingCompany", "amount" };
+		for (int i=0; i< valuables.length; i++)
+		{
+			valuables[i]= addLineSeparator(obj_searched_book.get(obj_valuables[i]));
+		}
+		return bookName + "Author: "+author + "translator: " + translator + "PublishingCompany: "+ publishingCompany + "amount: " + amount;
 	}
+	private static String addLineSeparator(Object str) { return str + System.lineSeparator(); }
 }
