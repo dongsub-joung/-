@@ -1,11 +1,20 @@
 package Init;
 
-import books_data.searchF_other;
+import books_data.DataArray;
+import books_data.SearchValueAndSave;
+import books_data.volume;
+import books_data.BookNameList;
+import user_data.UserDate_Object;
+import user_data.User;
 
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
+
+/*
+    Components
+*/
 class FONTS
 {
     final static String FONT00= "Arial Black";
@@ -49,29 +58,21 @@ class AboutJLabel
 
 public class M_CoverF
 {
-    static searchF_bookName search_book = new searchF_bookName();
+    private static DataArray data_arrays= new DataArray();
 
-    private static String checkAmount(String amount)
-    {
-        if(amount == "nell") return "1";
-        else return amount;
-    }
+    static int searched_index= 0;
+
     public static void SearchEvent(JTextField textField, JTextField textField_1, JTextArea textArea)
     {
 //        Get input TEXT
         String input = textField.getText();
 
-        int index = search_book.return_ResultIndex(input);
-        searchF_other other = new searchF_other(index);
+        searched_index = data_arrays.getBookName().indexOf(input);
+        SearchValueAndSave other = new SearchValueAndSave(searched_index);
 
-        String bookName = search_book.return_bookName(index) + System.lineSeparator();;
-        String author = other.retunr_author() + System.lineSeparator();
-        String translator= other.retunr_translator() + System.lineSeparator();
-        String publishingCompany = other.retunr_publishing() + System.lineSeparator();
-        String amount = other.retunr_amount();
-        final String RESULT= "Title: " + bookName + "Author: "+author + "translator: " + translator + "PublishingCompany: "+ publishingCompany;
 
-        textField_1.setText(checkAmount(amount));
+
+        textField_1.setText(volume.checkAmount(amount));
         textArea.setText(RESULT);
     }
 

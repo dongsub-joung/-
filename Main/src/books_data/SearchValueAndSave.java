@@ -82,4 +82,14 @@ public class SearchValueAndSave
 	public static HashMap getObj_searched_book() {
 		return obj_searched_book;
 	}
+
+	public static String getSearchedObj()
+	{
+		String bookName = obj_searched_book.get("BookName") + System.lineSeparator();
+		String author = obj_searched_book.get("Authors") + System.lineSeparator();
+		String translator= other.retunr_translator() + System.lineSeparator();
+		String publishingCompany = other.retunr_publishing() + System.lineSeparator();
+		String amount = other.retunr_amount();
+		return bookName + "Author: "+author + "translator: " + translator + "PublishingCompany: "+ publishingCompany;
+	}
 }

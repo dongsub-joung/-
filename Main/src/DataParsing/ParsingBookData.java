@@ -5,6 +5,8 @@ import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+import java.util.ArrayList;
+
 public class ParsingBookData
 {
     //	Please check object type when you use.
@@ -26,6 +28,7 @@ public class ParsingBookData
                 value = cell.getErrorCellValue()+"";
                 break;
             default:
+                value= "null";
                 break;
         }
         return value;

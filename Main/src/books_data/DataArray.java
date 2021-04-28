@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class DataArray
 {
-    private String bookName
+    public static String bookName
             , publishingCompany
             , author
             , translator
@@ -28,25 +28,6 @@ public class DataArray
     public static ArrayList<String> getTranslators(){ return translators; }
     public static ArrayList<String> getAmounts(){ return amounts; }
     public static ArrayList<String> getLocations() { return locations; }
-
-    public String getBookName() {
-        return bookName;
-    }
-    public String getPublishingCompany() {
-        return publishingCompany;
-    }
-    public String getAuthor() {
-        return author;
-    }
-    public String getTranslator() {
-        return translator;
-    }
-    public String getAmount() {
-        return amount;
-    }
-    public String getLocation() {
-        return location;
-    }
 
     //	Getter Single String classValuable
     public String getSingleValue(String type, int index)
@@ -78,12 +59,4 @@ public class DataArray
         }
         return result;
     }
-
-
-
-//    public String getBookName() { return bookName; }
-//    public String retunr_author() { return author; }
-//    public String retunr_publishing() { return publishingCompany; }
-//    public String retunr_translator() { return translator; }
-//    public String retunr_amount() { return amount; }
 }

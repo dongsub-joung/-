@@ -1,4 +1,4 @@
-package Init;
+package books_data;
 
 public class volume
 {
@@ -29,9 +29,15 @@ public class volume
 		book_volume= toInt(str_type)-1;
 		if(book_volume == 0) toggle= true;
 	}
+
 	public void increase(String str_type)
 	{
 		book_volume= toInt((str_type))+1;
+	}
 
+	public static String checkAmount(String amount)
+	{
+		if(amount == "nell") return "1";
+		else return amount;
 	}
 }

@@ -1,7 +1,5 @@
 package Init;
 
-import books_data.searchF_other;
-
 import java.awt.*;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
@@ -13,7 +11,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.ArrayList;
 import java.awt.event.InputMethodListener;
 import java.awt.event.InputMethodEvent;
 import javax.swing.JTextArea;
