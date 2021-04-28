@@ -29,6 +29,25 @@ public class DataArray
     public static ArrayList<String> getAmounts(){ return amounts; }
     public static ArrayList<String> getLocations() { return locations; }
 
+    public static String getBookName() {
+        return bookName;
+    }
+    public static String getPublishingCompany() {
+        return publishingCompany;
+    }
+    public static String getAuthor() {
+        return author;
+    }
+    public static String getTranslator() {
+        return translator;
+    }
+    public static String getAmount() {
+        return amount;
+    }
+    public static String getLocation() {
+        return location;
+    }
+
     //	Getter Single String classValuable
     public String getSingleValue(String type, int index)
     {

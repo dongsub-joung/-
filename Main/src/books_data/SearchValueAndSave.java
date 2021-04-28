@@ -39,8 +39,8 @@ public class SearchValueAndSave
 		{
 			if(row != null)
 			{
-				// [max : max +3]
 				int cells = row.getPhysicalNumberOfCells();
+				// [1 : max +3]
 				for(int columnIndex=1; columnIndex <= cells+3; columnIndex++)
 				{
 					XSSFCell cell = row.getCell(columnIndex);

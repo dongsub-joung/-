@@ -80,21 +80,7 @@ public class CoverF_secon extends JFrame
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
 			{
-//				Get value each file.
-				String personData = textField.getText();
-				String name = textField_1.getText();
-				String PHData = textField_2.getText();
-				String bookTitle = textField_3.getText();
 
-				UserDate_Object check= new UserDate_Object(personData,name,PHData,bookTitle);
-
-				JOptionPane.showMessageDialog(null, "Complete Check out. Enjoy.");
-
-//				Reset Values
-				textField.setText("");
-				textField_1.setText("");
-				textField_2.setText("");
-				textField_3.setText("");
 			}
 		});
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);

@@ -20,6 +20,9 @@ public class UserDate_Object
     }
 
     //	Getter
-
     public static HashMap getInfo() { return info; }
+
+    public static int getCount() {
+        return count;
+    }
 }
