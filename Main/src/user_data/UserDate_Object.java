@@ -1,33 +1,25 @@
 package user_data;
 
+import java.awt.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.NavigableMap;
+
 public class UserDate_Object
 {
-    private String personNum,  name, phonNum, bookTitle;;
-    { personNum= ""; name= ""; phonNum= ""; bookTitle= ""; }
+    private static int count= 0;
+    private static HashMap info;
 
     public UserDate_Object(){}
     public UserDate_Object(String ID, String name, String PH, String bookName)
     {
-        this.personNum = ID;
-        this.name = name;
-        this.phonNum = PH;
-        this.bookTitle = bookName;
+        String[] list= {ID, name, PH, bookName};
+
+        info= new HashMap();
+        info.put(++count, list);
     }
 
     //	Getter
-    public String getPersonNum() {
-        return personNum;
-    }
 
-    public String getName() {
-        return name;
-    }
-
-    public String getPhonNum() {
-        return phonNum;
-    }
-
-    public String getBookTitle() {
-        return bookTitle;
-    }
+    public static HashMap getInfo() { return info; }
 }
