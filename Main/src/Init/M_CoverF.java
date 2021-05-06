@@ -92,22 +92,6 @@ public class M_CoverF
                 boolean sw = SW.get(i);
 
                 choice.add(a+" , "+b);
-
-				/*
-				if(sw==false)
-				{
-					String a = ID.get(i);
-					String b = BookName.get(i);
-					System.out.println("a"+a);
-					System.out.println("b"+b);
-
-					choice.add(a+" , "+b);
-				}
-				else
-				{
-					continue;
-				}
-				*/
             }
         }
         catch (Exception e) { System.out.println("Fail Saving user data."); e.printStackTrace(); }
