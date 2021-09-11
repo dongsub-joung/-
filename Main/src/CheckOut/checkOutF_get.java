@@ -80,11 +80,58 @@ public class checkOutF_get
 		}
 		catch (FileNotFoundException e){ e.printStackTrace(); }
 		catch (IOException e) { e.printStackTrace(); }
+		catch (Exception e) { printf(">> Unexpected ERR"); e.printStackTrace(); }
 	}
 
-	// Remove a choice value selected.
-	public void delData()
-	{
+	
+	/*
+	* Remove a selected value about a book.
+	* TODO: GET A VALUE choose GUI options from other class file.
+	* Data class is the structure of book's infomations .
+	* Data data= new Data();
+	*/
+	class InfoOfBook {
+		String title;
+		int reId;	
+		InfoOfBook(){
+			title= data.title;
+			reId= data.ID;
+		}
 		
+		public ArrayList<String> returnArray(){
+			private ArrayList<String> pushOther = new ArrayList<String>();
+			pushOther.append(title);
+			pushOther.append(reId+" ");
+			return pushOther;
+		}
+	}
+	
+	class InfoOfusers {
+		String name;
+		int PH;
+		int date;
+		InfoOfusers(){
+			name= data.user_name;
+			PH= data.PH;
+			date= data.date;
+		}
+		public ArrayList<String> returnArray(){
+			private ArrayList<String> pushOther = new ArrayList<String>();
+			pushOther.name(title);
+			pushOther.PH(reId+" ");
+			pushOther.date(reId+" ");
+			return pushOther;
+		}
+	}
+
+	public void delData(Data data)
+	{
+		String reset_value= "*";
+		Iterator<String> iter= data.iterator();
+		
+		int i= 0;
+		while(iter.hasNext()){
+			data.set(i, reset_value); i++;
+		}
 	}
 }
