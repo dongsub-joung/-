@@ -69,6 +69,7 @@ OR
 
 
 ## Contributing
+// considering
 + [JDBC](https://xinet.kr/?p=1591)
 
 
