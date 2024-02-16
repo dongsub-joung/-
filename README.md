@@ -69,10 +69,6 @@ OR
 
 
 ## Contributing
-// considering
-+ [JDBC](https://xinet.kr/?p=1591)
-
-
 + [APACHE POI](https://poi.apache.org/components/spreadsheet/quick-guide.html)
 
 
